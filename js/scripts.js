@@ -58,8 +58,19 @@ $(document).ready(function() {
 
     /* jQuery UI - parts */
     function addProduct() {
+        // url manipulation of products
         var url = $("#url").val();
         console.log("ez az: "+ url)
+
+            var splitted = url.split('/');
+            var path = "http://static.origos.hu/s/partners/maileon/img/clickshop/hirlevel/"
+            var imgurl = path + splitted[3] + ".jpg";
+
+            url = url + "?hirlevel=valami";
+
+        $(".selected").find("a").attr("href", url);
+        $(".selected").find("img").attr("src", imgurl);
+
         $.ajax({
             url: "test.py",
             type: "post",
